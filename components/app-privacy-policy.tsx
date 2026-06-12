@@ -13,6 +13,11 @@ export interface AppPrivacyPolicyProps {
     title: string
     body: string
   }
+  /**
+   * When true, the app offers in-app subscriptions (Apple Guideline 3.1.2).
+   * Adjusts the overview wording and adds a subscription/payment data section.
+   */
+  hasSubscriptions?: boolean
 }
 
 /**
@@ -24,6 +29,7 @@ export function AppPrivacyPolicy({
   eyebrow,
   effectiveDate,
   permission,
+  hasSubscriptions,
 }: AppPrivacyPolicyProps) {
   const email = (
     <a
@@ -40,8 +46,11 @@ export function AppPrivacyPolicy({
         <p>
           This privacy policy applies to the {appName} app (hereby referred to as
           &ldquo;Application&rdquo;) for mobile devices that was created by{" "}
-          {SITE.provider} (hereby referred to as &ldquo;Service Provider&rdquo;) as a
-          Free service. This service is intended for use &ldquo;AS IS&rdquo;.
+          {SITE.provider} (hereby referred to as &ldquo;Service Provider&rdquo;).
+          {hasSubscriptions
+            ? " The Application is free to download and offers optional auto-renewable subscriptions for premium features."
+            : " The Application is provided as a Free service."}{" "}
+          This service is intended for use &ldquo;AS IS&rdquo;.
         </p>
       </LegalSection>
 
@@ -119,6 +128,24 @@ export function AppPrivacyPolicy({
           </li>
         </ul>
       </LegalSection>
+
+      {hasSubscriptions && (
+        <LegalSection title="Subscriptions & Payment Information">
+          <p>
+            The Application offers auto-renewable subscriptions. All payments are
+            processed by Apple through your Apple ID; the Service Provider does not
+            receive or store your full payment card details. Subscription status,
+            entitlements, and anonymized purchase events are managed through RevenueCat
+            to deliver and restore your premium features.
+          </p>
+          <p>
+            Payment is charged to your Apple ID at confirmation of purchase, and the
+            subscription auto-renews unless canceled at least 24 hours before the end of
+            the current period. You can manage or cancel subscriptions at any time in
+            Settings &gt; Apple ID &gt; Subscriptions.
+          </p>
+        </LegalSection>
+      )}
 
       <LegalSection title="Opt-Out Rights">
         <p>

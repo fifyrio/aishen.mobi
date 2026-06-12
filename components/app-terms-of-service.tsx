@@ -1,6 +1,26 @@
 import { LegalPage, LegalSection } from "@/components/legal-page"
 import { SITE } from "@/lib/products"
 
+export interface SubscriptionPlan {
+  /** Plan length label, e.g. "Weekly" or "Yearly" */
+  name: string
+  /** Display price, e.g. "$4.99 / week" */
+  price: string
+  /** Optional note, e.g. "3-day free trial included" */
+  note?: string
+}
+
+export interface SubscriptionInfo {
+  /** Subscription product title, e.g. "Glowria PRO" */
+  productName: string
+  /** Auto-renewable plans offered */
+  plans: SubscriptionPlan[]
+  /** Link to the app's privacy policy, e.g. "/glowria/privacy-policy" */
+  privacyUrl: string
+  /** Link to the app's terms of service, e.g. "/glowria/terms-of-service" */
+  termsUrl: string
+}
+
 export interface AppTermsOfServiceProps {
   /** App display name, e.g. "Vido AI: Photo to Video" */
   appName: string
@@ -10,6 +30,12 @@ export interface AppTermsOfServiceProps {
   effectiveDate: string
   /** ISO effective date used in body text, e.g. "2026-01-28" */
   effectiveDateIso: string
+  /**
+   * Optional auto-renewable subscription disclosure (Apple Guideline 3.1.2).
+   * When provided, the app is described as free-to-download with paid plans and
+   * a dedicated subscription section is rendered.
+   */
+  subscription?: SubscriptionInfo
 }
 
 /**
@@ -21,6 +47,7 @@ export function AppTermsOfService({
   eyebrow,
   effectiveDate,
   effectiveDateIso,
+  subscription,
 }: AppTermsOfServiceProps) {
   return (
     <LegalPage
@@ -57,8 +84,10 @@ export function AppTermsOfService({
         <p>
           These terms and conditions apply to the {appName} app (hereby referred to as
           &ldquo;Application&rdquo;) for mobile devices that was created by{" "}
-          {SITE.provider} (hereby referred to as &ldquo;Service Provider&rdquo;) as a
-          Free service.
+          {SITE.provider} (hereby referred to as &ldquo;Service Provider&rdquo;)
+          {subscription
+            ? ", which is free to download and offers optional auto-renewable subscriptions."
+            : " as a Free service."}
         </p>
         <p>
           Upon downloading or utilizing the Application, you are automatically agreeing
@@ -66,6 +95,57 @@ export function AppTermsOfService({
           understand these terms prior to using the Application.
         </p>
       </LegalSection>
+
+      {subscription && (
+        <LegalSection title="Subscriptions, Auto-Renewal & Cancellation">
+          <p>
+            {appName} is free to download. {subscription.productName} is an
+            auto-renewable subscription that unlocks the full set of premium features.
+            The following plans are offered:
+          </p>
+          <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
+            {subscription.plans.map((plan) => (
+              <li key={plan.name}>
+                <span className="text-[var(--color-text)]">{plan.name}</span> —{" "}
+                {plan.price}
+                {plan.note ? ` (${plan.note})` : ""}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Payment will be charged to your Apple ID account at the confirmation of
+            purchase. The subscription automatically renews unless it is canceled at
+            least 24 hours before the end of the current period. Your account will be
+            charged for renewal within 24 hours prior to the end of the current period,
+            at the price of the selected plan.
+          </p>
+          <p>
+            You can manage and cancel your subscriptions by going to your account
+            settings on the App Store (Settings &gt; Apple ID &gt; Subscriptions) after
+            purchase. Any unused portion of a free trial period, if offered, will be
+            forfeited when you purchase a subscription to that publication, where
+            applicable.
+          </p>
+          <p>
+            For full details on how subscription and purchase data is handled, please
+            review our{" "}
+            <a
+              href={subscription.privacyUrl}
+              className="neon-text-cyan underline-offset-4 hover:underline"
+            >
+              Privacy Policy
+            </a>{" "}
+            and these{" "}
+            <a
+              href={subscription.termsUrl}
+              className="neon-text-cyan underline-offset-4 hover:underline"
+            >
+              Terms of Use (EULA)
+            </a>
+            .
+          </p>
+        </LegalSection>
+      )}
 
       <LegalSection title="License Grant">
         <p>

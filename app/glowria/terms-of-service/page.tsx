@@ -14,6 +14,19 @@ export default function GlowriaTermsPage() {
       eyebrow="GLOWRIA: SKINCARE ROUTINE"
       effectiveDate="January 28, 2026"
       effectiveDateIso="2026-01-28"
+      subscription={{
+        productName: "Glowria PRO",
+        plans: [
+          { name: "Weekly", price: "$4.99 / week" },
+          {
+            name: "Yearly",
+            price: "$29.99 / year",
+            note: "3-day free trial included",
+          },
+        ],
+        privacyUrl: "/glowria/privacy-policy",
+        termsUrl: "/glowria/terms-of-service",
+      }}
     />
   )
 }
