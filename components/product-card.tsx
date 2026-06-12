@@ -84,6 +84,8 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
         <a
           href={product.appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-neon btn-magenta rounded-md px-4 py-2 text-[0.7rem]"
         >
           App Store

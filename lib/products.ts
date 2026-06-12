@@ -72,6 +72,21 @@ export const products: Product[] = [
     appStoreUrl: "#",
     privacyUrl: "/vido-ai/privacy-policy",
   },
+  {
+    slug: "glowria",
+    name: "Glowria: Skincare Routine",
+    tag: "> AI-POWERED SKINCARE COMPANION",
+    description:
+      "Scan your face for an instant Skin Health Score, build your morning and evening routine, and track your glow-up over time. Skincare turned into a game you actually want to play.",
+    features: [
+      "AI skin analysis across 5 dimensions",
+      "Routine tracking with glow streaks & badges",
+      "Weekly glow reports with AI insights",
+    ],
+    accent: "green",
+    appStoreUrl: "https://apps.apple.com/us/app/glowria-skincare-routine/id6762101631",
+    privacyUrl: "/glowria/privacy-policy",
+  },
 ]
 
 export const SITE = {
