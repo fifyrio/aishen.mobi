@@ -18,7 +18,19 @@ export interface AppPrivacyPolicyProps {
    * Adjusts the overview wording and adds a subscription/payment data section.
    */
   hasSubscriptions?: boolean
+  /**
+   * Optional override for the third-party services list (name + purpose).
+   * Defaults to the standard analytics/billing stack.
+   */
+  thirdPartyServices?: string[]
+  /**
+   * Optional app-specific sections (e.g. AI model disclosure, data collected,
+   * medical disclaimer). Rendered after the standard data-handling sections.
+   */
+  extraSections?: { title: string; body: React.ReactNode }[]
 }
+
+const DEFAULT_THIRD_PARTY = ["Google Analytics for Firebase", "RevenueCat"]
 
 /**
  * Standard mobile-app privacy policy, shared across every product page.
@@ -30,6 +42,8 @@ export function AppPrivacyPolicy({
   effectiveDate,
   permission,
   hasSubscriptions,
+  thirdPartyServices = DEFAULT_THIRD_PARTY,
+  extraSections,
 }: AppPrivacyPolicyProps) {
   const email = (
     <a
@@ -104,8 +118,9 @@ export function AppPrivacyPolicy({
           Policy of the third-party service providers used by the Application:
         </p>
         <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
-          <li>Google Analytics for Firebase</li>
-          <li>RevenueCat</li>
+          {thirdPartyServices.map((service) => (
+            <li key={service}>{service}</li>
+          ))}
         </ul>
         <p>
           The Service Provider may disclose User Provided and Automatically Collected
@@ -146,6 +161,12 @@ export function AppPrivacyPolicy({
           </p>
         </LegalSection>
       )}
+
+      {extraSections?.map((section) => (
+        <LegalSection key={section.title} title={section.title}>
+          {section.body}
+        </LegalSection>
+      ))}
 
       <LegalSection title="Opt-Out Rights">
         <p>
