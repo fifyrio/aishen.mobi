@@ -93,4 +93,5 @@ export const SITE = {
   brand: "SHEN'S DESIGN",
   email: "support@aishen.mobi",
   provider: "hongmei shen",
+  url: "https://aishen.mobi",
 }

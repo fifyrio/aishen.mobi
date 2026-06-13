@@ -46,6 +46,14 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5">
             <li>
               <Link
+                href="/blog"
+                className="font-mono text-xs text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+              >
+                Skincare Guide
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/curio-snap/privacy-policy"
                 className="font-mono text-xs text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
               >

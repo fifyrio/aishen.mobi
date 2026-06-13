@@ -18,6 +18,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aishen.mobi"),
   title: "SHEN'S DESIGN — AI-Powered Identification",
   description:
     "Awaken the value hidden by time. AI-powered identification tools for antiques, jewelry, chemistry, and photo-to-video.",

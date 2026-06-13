@@ -4,6 +4,7 @@ import { SITE } from "@/lib/products"
 
 const navItems = [
   { label: "PRODUCTS", href: "/#products" },
+  { label: "BLOG", href: "/blog" },
   { label: "MISSION", href: "/#mission" },
   { label: "CONTACT", href: "/#contact" },
 ]
