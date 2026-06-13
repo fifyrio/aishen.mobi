@@ -6,7 +6,6 @@ import {
   Sparkles,
   ScanFace,
   ListChecks,
-  Flame,
   BookHeart,
   LineChart,
   Check,
@@ -14,13 +13,7 @@ import {
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { SectionHeading } from "@/components/section-heading"
-import {
-  ScoreMock,
-  RoutineMock,
-  StreakMock,
-  JournalMock,
-  ReportMock,
-} from "@/components/glowria/mockups"
+import { ScreenFrame } from "@/components/glowria/screen-frame"
 
 export const metadata: Metadata = {
   title: "Glowria — AI Skincare Companion | SHEN'S DESIGN",
@@ -37,9 +30,11 @@ interface Feature {
   kicker: string
   title: string
   accent: string
+  glow: string
   icon: React.ReactNode
   points: string[]
-  mock: React.ReactNode
+  screen: string
+  alt: string
 }
 
 const FEATURES: Feature[] = [
@@ -48,70 +43,64 @@ const FEATURES: Feature[] = [
     kicker: "AI SKIN ANALYSIS",
     title: "Know Your Skin In Seconds",
     accent: "neon-text-magenta",
+    glow: "glow-border-magenta",
     icon: <ScanFace className="h-5 w-5" strokeWidth={2.2} />,
     points: [
       "Take a selfie, get a Skin Health Score (0–100)",
       "5 dimensions: Acne, Pores, Oiliness, Dark Spots, Hydration",
       "Grades from S to D so you always know where you stand",
-      "Trend charts show how your score moves over time",
+      "Save every scan to your skin diary",
     ],
-    mock: <ScoreMock />,
+    screen: "/images/glowria/skin-score.png",
+    alt: "Glowria skin analysis screen showing a Skin Health Score of 82 and skin dimension breakdown",
   },
   {
     id: "routine",
     kicker: "BUILD YOUR ROUTINE",
-    title: "Your Steps, Your Way",
+    title: "Your Routine, Your Streak",
     accent: "neon-text-cyan",
+    glow: "glow-border-cyan",
     icon: <ListChecks className="h-5 w-5" strokeWidth={2.2} />,
     points: [
-      "Morning & evening routines set up in minutes",
+      "Morning & evening routines with your real products",
       "Default flow: Cleanse → Toner → Serum → Moisturizer → Sunscreen",
-      "Add steps, reorder, attach product notes",
-      "Check off each step with satisfying confetti",
+      "Check off steps and keep your weekly streak alive",
+      "Add steps, reorder, and attach product notes",
     ],
-    mock: <RoutineMock />,
+    screen: "/images/glowria/routine.png",
+    alt: "Glowria routine screen with a weekly streak tracker and a morning skincare checklist",
   },
   {
-    id: "streak",
-    kicker: "NEVER MISS A STEP",
-    title: "Build An Unbreakable Glow Streak",
+    id: "guide",
+    kicker: "STEP-BY-STEP GUIDANCE",
+    title: "Know Why Each Step Matters",
     accent: "neon-text-orange",
-    icon: <Flame className="h-5 w-5" strokeWidth={2.2} />,
-    points: [
-      "Morning & evening push reminders keep you on track",
-      "Watch your streak climb day after day",
-      "Earn badges: Week Warrior, Glow Getter, Skin Devotee",
-      "Weekly calendar shows consistency at a glance",
-    ],
-    mock: <StreakMock />,
-  },
-  {
-    id: "journal",
-    kicker: "YOUR SKIN JOURNAL",
-    title: "See What Your Skin Is Telling You",
-    accent: "neon-text-purple",
+    glow: "glow-border-orange",
     icon: <BookHeart className="h-5 w-5" strokeWidth={2.2} />,
     points: [
-      "Every scan saved with selfie, scores, and notes",
-      "Tag entries: Sleep, Diet, Period, Medication, Stress",
-      "Spot the link between habits and your skin",
-      "A beautiful timeline of your whole journey",
+      "Clear guidance for every step in your routine",
+      "Why it matters, plus how to use it properly",
+      "Timing, amount, and frequency at a glance",
+      "Built for beginners and skin enthusiasts alike",
     ],
-    mock: <JournalMock />,
+    screen: "/images/glowria/step-guide.png",
+    alt: "Glowria step guide screen explaining the cleanse step with timing, amount, and how-to instructions",
   },
   {
-    id: "reports",
-    kicker: "WEEKLY GLOW REPORTS",
-    title: "Insights That Actually Help",
-    accent: "neon-text-magenta",
+    id: "diary",
+    kicker: "SKIN DIARY & TRENDS",
+    title: "See Your Glow-Up Over Time",
+    accent: "neon-text-purple",
+    glow: "glow-border-purple",
     icon: <LineChart className="h-5 w-5" strokeWidth={2.2} />,
     points: [
-      "Weekly summary of score changes & routine completion",
-      "See which dimensions improved or declined",
-      "AI connects your habits to real skin improvements",
-      "Radar charts compare your progress over time",
+      "Track your Glow Score trend across weeks",
+      "Tag lifestyle factors: Sleep, Water, Stress, Period, Diet",
+      "Log how your skin feels each day",
+      "Spot the link between your habits and your skin",
     ],
-    mock: <ReportMock />,
+    screen: "/images/glowria/skin-diary.png",
+    alt: "Glowria skin diary screen showing a Glow Score trend chart and lifestyle factor tags",
   },
 ]
 
@@ -183,7 +172,12 @@ export default function GlowriaPage() {
 
             <div className="relative">
               <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_40%,rgba(255,43,214,0.18),transparent_70%)]" />
-              <ScoreMock />
+              <ScreenFrame
+                src="/images/glowria/skin-score.png"
+                alt="Glowria skin analysis screen showing a Skin Health Score of 82"
+                glow="glow-border-magenta"
+                priority
+              />
             </div>
           </div>
         </section>
@@ -228,10 +222,10 @@ export default function GlowriaPage() {
                   </ul>
                 </div>
 
-                {/* Mockup */}
+                {/* Screenshot */}
                 <div className="relative flex justify-center">
                   <div className="absolute inset-0 -z-10 bg-[radial-gradient(55%_55%_at_50%_45%,rgba(168,85,247,0.14),transparent_70%)]" />
-                  {feature.mock}
+                  <ScreenFrame src={feature.screen} alt={feature.alt} glow={feature.glow} />
                 </div>
               </div>
             ))}
