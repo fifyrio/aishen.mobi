@@ -25,6 +25,33 @@ export default function GlowriaPrivacyPage() {
       ]}
       extraSections={[
         {
+          title: "Facial Data Collection & Third-Party AI (At a Glance)",
+          body: (
+            <>
+              <p className="rounded-md border border-[rgba(255,43,214,0.35)] bg-[rgba(255,43,214,0.06)] p-4 text-[var(--color-text)]">
+                <strong className="neon-text-magenta">
+                  We collect facial data.
+                </strong>{" "}
+                When you take a skin scan, the Application collects facial images
+                (selfies) of your face.{" "}
+                <strong className="neon-text-magenta">
+                  We send this user content to a third-party AI service.
+                </strong>{" "}
+                Your facial images are transmitted to Google Gemini (Google&rsquo;s AI
+                model) to analyze your facial and skin features.
+              </p>
+              <p>
+                <span className="text-[var(--color-text)]">Why we collect it:</span> the
+                facial analysis is used to detect skin features and conditions (such as
+                acne, pores, oiliness, dark spots, and hydration), generate your Skin
+                Health Score, and produce personalized skincare routine recommendations
+                and guidance. We do not use your face for any unrelated purpose, and we do
+                not use it for advertising or facial recognition / identity matching.
+              </p>
+            </>
+          ),
+        },
+        {
           title: "Information We Collect",
           body: (
             <>
@@ -33,8 +60,11 @@ export default function GlowriaPrivacyPage() {
               </p>
               <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
                 <li>
-                  Facial images (selfies) you capture or select — used only for skin
-                  analysis and deleted shortly after processing
+                  <span className="text-[var(--color-text)]">
+                    Facial images (selfies)
+                  </span>{" "}
+                  you capture or select — sent to a third-party AI service for analysis
+                  and not retained after processing
                 </li>
                 <li>
                   Skin analysis results — your Skin Health Score and dimension scores
@@ -61,21 +91,98 @@ export default function GlowriaPrivacyPage() {
           ),
         },
         {
-          title: "AI Skin Analysis & Your Photos",
+          title: "How Your Data Is Used",
           body: (
             <>
               <p>
-                Skin analysis and routine recommendations are generated using a
-                third-party AI model, Google Gemini, which the Application accesses
-                through our own backend hosted on Cloudflare Workers. When you take a
-                skin scan, your selfie is transmitted securely to our backend, sent to
-                Google Gemini for analysis, and the resulting scores and guidance are
-                returned to you.
+                Your data is used solely to provide and improve the skincare features of
+                the Application:
+              </p>
+              <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
+                <li>
+                  <span className="text-[var(--color-text)]">Facial images</span> →
+                  analyzed by Google Gemini to detect skin features and generate your Skin
+                  Health Score and dimension scores
+                </li>
+                <li>
+                  <span className="text-[var(--color-text)]">Skin scores & diary</span> →
+                  used to generate personalized skincare routines, weekly glow reports,
+                  and AI insights
+                </li>
+                <li>
+                  <span className="text-[var(--color-text)]">Routine & progress</span> →
+                  used to track your check-ins, streaks, and improvement over time
+                </li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "Third-Party Services & Data Protection",
+          body: (
+            <>
+              <p>
+                We share data with the third-party providers below only as needed to
+                operate the Application. We have reviewed these providers and confirm that{" "}
+                <span className="text-[var(--color-text)]">
+                  each provides a level of data protection consistent with Apple&rsquo;s
+                  App Store Review Guidelines and applicable data-protection requirements.
+                </span>
+              </p>
+              <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
+                <li>
+                  <span className="text-[var(--color-text)]">Google Gemini (Google)</span>{" "}
+                  — receives your facial images to perform skin analysis and generate
+                  guidance. Governed by Google&rsquo;s privacy and API data-use terms.
+                </li>
+                <li>
+                  <span className="text-[var(--color-text)]">Cloudflare Workers</span> —
+                  hosts our backend and securely relays requests between the app and the
+                  AI model.
+                </li>
+                <li>
+                  <span className="text-[var(--color-text)]">RevenueCat</span> — manages
+                  subscriptions and anonymized in-app purchase events.
+                </li>
+                <li>
+                  <span className="text-[var(--color-text)]">
+                    Google Analytics for Firebase
+                  </span>{" "}
+                  — anonymized usage analytics.
+                </li>
+              </ul>
+              <p>
+                We do not sell your personal data, and we do not share your facial images
+                with any third party other than the AI service used to perform the
+                analysis you requested.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Data Storage & Retention",
+          body: (
+            <>
+              <p>
+                <span className="text-[var(--color-text)]">Facial data.</span> Your facial
+                images are transmitted over an encrypted connection (TLS) and processed
+                transiently.{" "}
+                <strong className="neon-text-magenta">
+                  We do not permanently store your facial images on our servers.
+                </strong>{" "}
+                Each selfie is deleted immediately after the skin analysis for that scan
+                completes and is not retained afterward. Only the resulting numeric scores
+                and routine data are kept so you can view your history.
               </p>
               <p>
-                Your selfies are used solely to provide this analysis. They are processed
-                transiently, deleted shortly after processing, and are never used to
-                train any AI models or sold or shared with third parties for advertising.
+                <span className="text-[var(--color-text)]">AI data &amp; training.</span>{" "}
+                <strong className="neon-text-magenta">
+                  Your facial images and personal content are never used to train any AI
+                  models
+                </strong>{" "}
+                — neither ours nor any third party&rsquo;s. They are sent to Google Gemini
+                only to return your analysis result for that request and are not used for
+                model training, profiling, or advertising.
               </p>
             </>
           ),
