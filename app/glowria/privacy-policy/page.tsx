@@ -52,6 +52,54 @@ export default function GlowriaPrivacyPage() {
           ),
         },
         {
+          title: "How Face Detection Works — On-Device vs. Server",
+          body: (
+            <>
+              <p>
+                The Application uses two clearly separated stages. Understanding the
+                difference matters for your privacy:
+              </p>
+              <p className="rounded-md border border-[rgba(34,211,238,0.35)] bg-[rgba(34,211,238,0.06)] p-4 text-[var(--color-text)]">
+                <strong className="neon-text-cyan">
+                  1. Real-time face detection (on-device only).
+                </strong>{" "}
+                While the camera is open, the Application draws a live white face-guide
+                overlay (mesh, contours, and landmarks) to help you align your face. This
+                runs entirely on your device using{" "}
+                <span className="text-[var(--color-text)]">
+                  Google ML Kit Face Detection
+                </span>
+                . It only detects the position and shape of a face to draw the guide.{" "}
+                <strong className="neon-text-cyan">
+                  It does not upload anything, does not perform identity recognition, and
+                  no face data leaves your device at this stage.
+                </strong>
+              </p>
+              <p className="rounded-md border border-[rgba(255,43,214,0.35)] bg-[rgba(255,43,214,0.06)] p-4 text-[var(--color-text)]">
+                <strong className="neon-text-magenta">
+                  2. Skin analysis (server-side).
+                </strong>{" "}
+                When you tap to scan, the Application captures a photo (or you pick one
+                from your library) and{" "}
+                <strong className="neon-text-magenta">
+                  uploads that selfie to our server, where it is analyzed by Google
+                  Gemini.
+                </strong>{" "}
+                This upload only happens after you agree to the in-app disclosure. This is
+                the stage where your selfie leaves the device.
+              </p>
+              <p>
+                Components involved: Google ML Kit Face Detection (on-device overlay
+                only), the device camera and photo library (to capture or select a
+                selfie), and Google Gemini on our server (the actual skin analysis). The
+                Application does not use Apple&rsquo;s ARKit or Vision frameworks; ML Kit
+                is Google&rsquo;s cross-platform on-device library and is used solely for
+                the alignment guide.
+              </p>
+            </>
+          ),
+        },
+        {
           title: "Information We Collect",
           body: (
             <>
