@@ -87,6 +87,21 @@ export const products: Product[] = [
     appStoreUrl: "https://apps.apple.com/us/app/glowria-skincare-routine/id6762101631",
     privacyUrl: "/glowria/privacy-policy",
   },
+  {
+    slug: "sipbook",
+    name: "Sipbook: Drink Diary",
+    tag: "> SNAP. SIP. REMEMBER.",
+    description:
+      "Turn every coffee, matcha, or boba into a stunning diary you'll want to share. Snap a photo — AI identifies your drink, estimates caffeine, and generates a beautiful share card in seconds.",
+    features: [
+      "AI drink recognition from one photo",
+      "Caffeine tracking with half-life insights",
+      "20+ aesthetic share card templates",
+    ],
+    accent: "orange",
+    appStoreUrl: "https://apps.apple.com/us/app/sipbook-drink-diary/id6773143360",
+    privacyUrl: "/sipbook/privacy-policy",
+  },
 ]
 
 export const SITE = {
