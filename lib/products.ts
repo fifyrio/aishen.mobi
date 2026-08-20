@@ -102,6 +102,21 @@ export const products: Product[] = [
     appStoreUrl: "https://apps.apple.com/us/app/sipbook-drink-diary/id6773143360",
     privacyUrl: "/sipbook/privacy-policy",
   },
+  {
+    slug: "bodyrank",
+    name: "BodyRank: AI Gym & Body Scan",
+    tag: "> SCAN. RANK. TRANSFORM.",
+    description:
+      "Snap a body scan — AI rates your physique across 7 metrics, places you on a rank ladder from Iron to Symmetric, and builds a personalized training plan that levels up as you do.",
+    features: [
+      "AI body scan with 7-metric physique score",
+      "Rank system from Iron to Symmetric",
+      "AI training plan with smart weight targets",
+    ],
+    accent: "cyan",
+    appStoreUrl: "#",
+    privacyUrl: "/bodyrank/privacy-policy",
+  },
 ]
 
 export const SITE = {
