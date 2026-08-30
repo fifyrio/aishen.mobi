@@ -10,11 +10,22 @@ export interface SubscriptionPlan {
   note?: string
 }
 
+export interface CreditPack {
+  /** Pack label, e.g. "150 Credits" */
+  name: string
+  /** Display price, e.g. "$4.99" */
+  price: string
+  /** Optional note, e.g. "Best value" */
+  note?: string
+}
+
 export interface SubscriptionInfo {
   /** Subscription product title, e.g. "Glowria PRO" */
   productName: string
   /** Auto-renewable plans offered */
   plans: SubscriptionPlan[]
+  /** Optional one-time consumable credit packs offered alongside subscriptions */
+  creditPacks?: CreditPack[]
   /** Link to the app's privacy policy, e.g. "/glowria/privacy-policy" */
   privacyUrl: string
   /** Link to the app's terms of service, e.g. "/glowria/terms-of-service" */
@@ -112,6 +123,24 @@ export function AppTermsOfService({
               </li>
             ))}
           </ul>
+          {subscription.creditPacks && subscription.creditPacks.length > 0 && (
+            <>
+              <p>
+                In addition to subscriptions, {appName} offers one-time credit packs
+                (consumable in-app purchases) that add credits to your balance and do not
+                automatically renew:
+              </p>
+              <ul className="ml-5 list-disc space-y-1.5 marker:text-[var(--color-magenta)]">
+                {subscription.creditPacks.map((pack) => (
+                  <li key={pack.name}>
+                    <span className="text-[var(--color-text)]">{pack.name}</span> —{" "}
+                    {pack.price}
+                    {pack.note ? ` (${pack.note})` : ""}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           <p>
             Payment will be charged to your Apple ID account at the confirmation of
             purchase. The subscription automatically renews unless it is canceled at
