@@ -117,6 +117,22 @@ export const products: Product[] = [
     appStoreUrl: "#",
     privacyUrl: "/bodyrank/privacy-policy",
   },
+  {
+    slug: "outfitfinder",
+    name: "Outfit Finder: Find Clothes",
+    tag: "> SNAP. STYLE. SHOP THE LOOK.",
+    description:
+      "Snap any outfit — AI identifies each garment, suggests matching pieces, and helps you find where to buy the look. Turn street style and screenshots into a wardrobe you can actually shop.",
+    features: [
+      "AI garment recognition from one photo",
+      "Smart outfit matching & styling tips",
+      "Find and shop similar clothing",
+    ],
+    accent: "magenta",
+    appStoreUrl:
+      "https://apps.apple.com/us/app/outfit-finder-find-clothes/id6760325553",
+    privacyUrl: "/outfitfinder/privacy-policy",
+  },
 ]
 
 export const SITE = {
