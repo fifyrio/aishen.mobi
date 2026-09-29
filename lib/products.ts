@@ -1,3 +1,5 @@
+import { VIDO_APP_STORE_URL } from "@/lib/vido-ai"
+
 export type Accent = "cyan" | "magenta" | "orange" | "purple" | "green"
 
 export interface Product {
@@ -69,7 +71,7 @@ export const products: Product[] = [
       "High quality output",
     ],
     accent: "magenta",
-    appStoreUrl: "#",
+    appStoreUrl: VIDO_APP_STORE_URL,
     privacyUrl: "/vido-ai/privacy-policy",
   },
   {
