@@ -7,7 +7,7 @@ interface LegalPageProps {
   eyebrow: string
   title: string
   subtitle?: string
-  effectiveDate: string
+  effectiveDate?: string
   children: React.ReactNode
 }
 
@@ -42,9 +42,11 @@ export function LegalPage({
               {subtitle}
             </p>
           )}
-          <p className="mt-5 inline-flex rounded-md border border-[rgba(34,211,238,0.3)] bg-[rgba(34,211,238,0.05)] px-3 py-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-[var(--color-cyan)]">
-            EFFECTIVE DATE: {effectiveDate}
-          </p>
+          {effectiveDate && (
+            <p className="mt-5 inline-flex rounded-md border border-[rgba(34,211,238,0.3)] bg-[rgba(34,211,238,0.05)] px-3 py-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-[var(--color-cyan)]">
+              EFFECTIVE DATE: {effectiveDate}
+            </p>
+          )}
         </header>
 
         <div className="legal-body mt-10 space-y-8">{children}</div>
