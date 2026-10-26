@@ -12,6 +12,7 @@ export default function CapydokuPrivacyPage() {
       appName="Capydoku: Cute Capybara Sudoku"
       eyebrow="CAPYDOKU: CUTE CAPYBARA SUDOKU"
       effectiveDate="October 26, 2026"
+      thirdPartyServices={["Google AdMob", "Google Analytics for Firebase"]}
     />
   )
 }
