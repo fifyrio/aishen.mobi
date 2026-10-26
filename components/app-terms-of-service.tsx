@@ -41,6 +41,8 @@ export interface AppTermsOfServiceProps {
   effectiveDate: string
   /** ISO effective date used in body text, e.g. "2026-01-28" */
   effectiveDateIso: string
+  /** Whether the app uses AI features. Defaults to true for existing apps. */
+  usesAi?: boolean
   /**
    * Optional auto-renewable subscription disclosure (Apple Guideline 3.1.2).
    * When provided, the app is described as free-to-download with paid plans and
@@ -58,6 +60,7 @@ export function AppTermsOfService({
   eyebrow,
   effectiveDate,
   effectiveDateIso,
+  usesAi = true,
   subscription,
 }: AppTermsOfServiceProps) {
   return (
@@ -87,7 +90,7 @@ export function AppTermsOfService({
           <li>
             Accept that the Service Provider retains all intellectual property rights
           </li>
-          <li>Acknowledge that AI technology is used to provide services</li>
+          {usesAi && <li>Acknowledge that AI technology is used to provide services</li>}
         </ul>
       </LegalSection>
 
@@ -281,15 +284,17 @@ export function AppTermsOfService({
         </p>
       </LegalSection>
 
-      <LegalSection title="AI Technology Usage">
-        <p>
-          The Application incorporates Artificial Intelligence (AI) technologies to
-          provide certain features or services. By using the Application, you
-          acknowledge and agree that AI may be used to process data and deliver
-          functionalities. The Service Provider ensures that all AI usage complies with
-          applicable laws and is designed to benefit the user experience.
-        </p>
-      </LegalSection>
+      {usesAi && (
+        <LegalSection title="AI Technology Usage">
+          <p>
+            The Application incorporates Artificial Intelligence (AI) technologies to
+            provide certain features or services. By using the Application, you
+            acknowledge and agree that AI may be used to process data and deliver
+            functionalities. The Service Provider ensures that all AI usage complies with
+            applicable laws and is designed to benefit the user experience.
+          </p>
+        </LegalSection>
+      )}
 
       <LegalSection title="Updates & Termination">
         <p>
